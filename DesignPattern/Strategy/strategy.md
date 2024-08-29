@@ -25,7 +25,7 @@
 - ex) 오리의 행동 통합하기
     * Duck 클래스 -> FlyBehavior, QuackBehavior 인터페이스 구현
     * 대신, performQuack(), performFly() 메소드 생성
-  ```
+  ``` java
   public abstract class Duck() {
       QuackBehavior quackBehavior;
       //기타코드
@@ -46,7 +46,7 @@
 
 ![img.png](image2.png)
 
-```
+``` java
 //Duck 클래스
 public abstract class Duck {
 
@@ -80,7 +80,7 @@ public abstract class Duck {
     }
 }
 ```
-```
+``` java
 //MallardDuck 클래스
 public class MallardDuck extends Duck {
     public MallardDuck() {
@@ -94,7 +94,7 @@ public class MallardDuck extends Duck {
     }
 }
 ```
-```
+``` java
 //ModelDuck 클래스
 public class ModelDuck extends Duck {
     public ModelDuck() {
@@ -108,7 +108,7 @@ public class ModelDuck extends Duck {
     }
 }
 ```
-```
+``` java
 //메인
 public class MiniDuckSimulator {
     public static void main(String[] args) {
