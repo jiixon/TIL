@@ -101,7 +101,7 @@ public class ConcreteObserver {
   - 구성 요소 형식이 달라도 모두 똑같은 인터페이스를 구현해야, WeatherData 객체에서 측정값을 보낼 수 있음.
 
 ### 기상 스테이션 설계
-![img.png](img.png)
+![img.png](./src/img.png)
 
 코드로는 `CurrentConditionsDisplay`, `ForecastDisplay`, `StatisticsDisplay` 모두 구현을 한 상태이지만, 예시로 하나만 설명해보고 넘어가려고 한다.
 ```java
@@ -154,5 +154,5 @@ public class WeatherStation {
     }
 }
 ```
-![img_1.png](img_1.png)
+![img_1.png](./src/img_1.png)
 결과가 잘 나옴을 알 수 있당 !

@@ -19,7 +19,7 @@
     * FlyBehavior, QuackBehavior
 - Duck의 행동이 별도의 클래스 안에 들어있기에 -> Duck 클래스에서는 그 행동을 구체적으로 구현할 필요가 X
 
-![img.png](image1.png)
+![img.png](./src/image2.png)
 - 날 수 있는 클래스는 FlyBehavior 인터페이스 구현 후 반드시 fly() 메소드를 구현하도록!
 
 - ex) 오리의 행동 통합하기
@@ -44,7 +44,7 @@
     * 각각 나는 행동과 꽥꽥거리는 행동을 위임 받음
 - 이렇게 두 클래스를 합치는 것을 **구성(composition)**
 
-![img.png](image2.png)
+![img.png](./src/image2.png)
 
 ``` java
 //Duck 클래스
