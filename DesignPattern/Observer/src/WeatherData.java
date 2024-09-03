@@ -34,16 +34,12 @@ public class WeatherData implements Subject {
 
     public void measurementsChanged() {
         notifyObservers(); //기상 스테이션으로부터 갱신된 측정값을 받으면 옵저버에게 알림
-        //각 디스플레이 갱신
-//        currentConditionsDisplay.update(temp, humidity, pressure);
-//        statisticsDisplay.update(temp, humidity, pressure);
-//        forecastDisplay.update(temp, humidity, pressure);
     }
     public void setMeasurements(float temperature, float humidity, float pressure) {
         this.temperature = temperature;
         this.humidity = humidity;
         this.pressure = pressure;
-        measurementsChanged(); //?
+        measurementsChanged();
     }
 
 
