@@ -30,10 +30,105 @@
   4) `cost()` 메소드를 호출한다. 이때, 첨가물의 가격을 계산하는 일은 해당 객체에게 위임한다.
 - Mocha, Whip 모두 데코레이터 
 
-![img.png](src/img.png)
+![img.png](src/resources/img.png)
 
 ### 특징
 - 데코레이터의 슈퍼클래스는 자신이 장식하고있는 객체의 슈퍼클래스와 같다.
 - 한 객체를 여러개의 데코레이터로 감쌀 수 있다.
 - _**데코레이터는 자신이 장식하고 있는 객체에게 어떤 행동을 위임하는 일 말고도 추가작업을 수행할 수 있다.**_
-![img2.png](src/img2.png)
+![img2.png](src/resources/img2.png)
+
+적용 예시 코드
+
+```java
+public abstract class Beverage {
+    String description = "제목 없음";
+    
+    public String getDescription() {
+        return description;
+    }
+    
+    public abstract double cost();
+}
+```
+- 음료에 대한 추상클래스 구현 
+- 추상클래스 - `getDescription()`, `cost()` 메소드 
+  - `getDescription()`는 이미 구현되어있음. 
+  - `cost()`는 서브클래스에서 구현해야함.
+
+```java
+public abstract class CondimentDecorator extends Beverage {
+    Beverage beverage;
+    public abstract String getDescription();
+}
+```
+- 데코레이터 역시 추상클래스 구현
+- 해당 추상클래스는 `Beverag`(객체 참조), `getDescription()` 추상메소드
+  - `Beverage`: 데코레이터가 감쌀 음료를 나타내는 Beverage 객체를 여기서 지정
+  - `getDescription()`: 모든 첨가물 데코레이터에 getDescription()메소드 새로 구현해서 만들 예정
+
+```java
+public class Espresso extends Beverage {
+    public Espresso() {
+        description = "에스프레소";
+    }
+    
+    @Override
+    public double cost() {
+        return 1.99; //에스프레소 가격 리턴
+    }
+}
+```
+- Beverage 확장
+  - 생성자에서 description 변수값을 설정 : 에스프레소
+  - 확장했기에 cost() 오버라이드로 재정의 : 에스프레소 가격 리턴
+
+```java
+public class Mocha extends  CondimentDecorator{
+    public Mocha(Beverage beverage) {
+        this.beverage = beverage;
+    }
+
+    @Override
+    public String getDescription() {
+        return beverage.getDescription() + ", 모카";
+    }
+
+    @Override
+    public double cost() {
+        return beverage.cost() + 0.20;
+    }
+}
+```
+- CondimentDecorator 확장한 Mocha(첨가물 == 데코레이터)
+  - Beverage는 감싸고자 하는 음료를 저장하는 인스턴스 변수
+    - 그것을 객체로 설정하는 생성자
+    - 데코레이터의 생성자에 감싸고자 하는 음료 객체를 전달하는 방식을 사용
+  - getDescription()를 오버라이드해서 재정의 
+    - 설명에 "음료 이름 + 첨가 아이템 이름"(예: 다크 로스트, 모카)로 표기되어야 하기에 더한 값 리턴
+  - cost()를 오버라이드해서 재정의
+    - 음료 가격에 첨가물 가격 더하여 리턴
+
+```java
+public class StarbuzzCoffee {
+    public static void main(String[] args) {
+        Beverage beverage = new Espresso(); //아무것도 넣지 않은 에스프래소 주문
+        System.out.println(beverage.getDescription()
+                + " $" + beverage.cost());
+
+        Beverage beverage2 = new DarkRoast(); //DarkRoast객체 만듦
+        beverage2 = new Mocha(beverage2); //Mocha로 감싸기
+        beverage2 = new Mocha(beverage2); //Mocha로 한번더 감싸기
+        beverage2 = new Whip(beverage2); //Whip로 감싸기
+        System.out.println(beverage2.getDescription() + " $" + beverage2.cost());
+    }
+}
+```
+<출력>
+```
+에스프레소 $1.99
+다크 로스트 커피, 모카, 모카, 휘핑 $1.49
+```
+### 데코레이터가 적용된 예: 자바I/0
+- InputStream이 추상 구성 요소, FilterInputStream은 추상데코레이터, 그리고 그 아래는 구상 데코레이터 임을 알 수 있다!
+![img3.png](src/resources/img3.png)

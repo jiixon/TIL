@@ -1,10 +1,10 @@
 public class StarbuzzCoffee {
     public static void main(String[] args) {
-        Beverage beverage = new Espresso(); //아무것도 넣지 않은 에스플소 주문
+        Beverage beverage = new Espresso(); //아무것도 넣지 않은 에스프레소 주문
         System.out.println(beverage.getDescription()
                 + " $" + beverage.cost());
 
-        Beverage beverage2 = new DarkRoast(); //DarkRoast객체 만듦
+        Beverage beverage2 = new DarkRoast(); //DarkRoast객체 만들기
         beverage2 = new Mocha(beverage2); //Mocha로 감싸기
         beverage2 = new Mocha(beverage2); //Mocha로 한번더 감싸기
         beverage2 = new Whip(beverage2); //Whip로 감싸기

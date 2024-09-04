@@ -6,7 +6,7 @@ public class Whip extends  CondimentDecorator{
     @Override
     public String getDescription() {
         //설명에 "음료 이름 + 첨가 아이템 이름"(예: 다크 로스트, 모카)로 표기되어야 하기에 더한 값 리턴
-        return beverage.getDescription() + ", 휘핑크ㅇ";
+        return beverage.getDescription() + ", 휘핑";
     }
 
     @Override
