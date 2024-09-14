@@ -262,5 +262,6 @@ fabric.properties
 .idea/caches/build_file_checksums.ser
 
 DesignPattern/**/Strategy.iml
-DesignPattern/**/observer.iml
-DesignPattern/**/decorator.iml
+DesignPattern/**/Observer.iml
+DesignPattern/**/Decorator.iml
+DesignPattern/**/Factory.iml
