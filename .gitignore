@@ -265,3 +265,4 @@ DesignPattern/**/Strategy.iml
 DesignPattern/**/Observer.iml
 DesignPattern/**/Decorator.iml
 DesignPattern/**/Factory.iml
+DesignPattern/**/Singleton.iml
