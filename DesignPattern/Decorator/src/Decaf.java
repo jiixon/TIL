@@ -1,5 +1,4 @@
 public class Decaf extends Beverage {
-
     //생성자
     public Decaf() {
         description = "디카페인"; //생성자에서 description 변수값을 설정
